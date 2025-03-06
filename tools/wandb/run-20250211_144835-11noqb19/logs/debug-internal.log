@@ -1,0 +1,16 @@
+{"time":"2025-02-11T14:48:35.858291724-05:00","level":"INFO","msg":"stream: starting","core version":"0.19.6","symlink path":"/home/sangeeth/Desktop/OpenPCDet/tools/wandb/run-20250211_144835-11noqb19/logs/debug-core.log"}
+{"time":"2025-02-11T14:48:35.963602846-05:00","level":"INFO","msg":"created new stream","id":"11noqb19"}
+{"time":"2025-02-11T14:48:35.963654641-05:00","level":"INFO","msg":"stream: started","id":"11noqb19"}
+{"time":"2025-02-11T14:48:35.9636999-05:00","level":"INFO","msg":"writer: Do: started","stream_id":"11noqb19"}
+{"time":"2025-02-11T14:48:35.963779004-05:00","level":"INFO","msg":"sender: started","stream_id":"11noqb19"}
+{"time":"2025-02-11T14:48:35.963827223-05:00","level":"INFO","msg":"handler: started","stream_id":"11noqb19"}
+{"time":"2025-02-11T14:48:36.270242068-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-11T14:48:38.917653894-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-11T14:48:38.918223714-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-11T14:48:39.285189215-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-11T14:48:39.530794931-05:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-02-11T14:48:40.538207018-05:00","level":"INFO","msg":"stream: closing","id":"11noqb19"}
+{"time":"2025-02-11T14:48:40.538242592-05:00","level":"INFO","msg":"handler: closed","stream_id":"11noqb19"}
+{"time":"2025-02-11T14:48:40.538261438-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"11noqb19"}
+{"time":"2025-02-11T14:48:40.538358607-05:00","level":"INFO","msg":"sender: closed","stream_id":"11noqb19"}
+{"time":"2025-02-11T14:48:40.538435898-05:00","level":"INFO","msg":"stream: closed","id":"11noqb19"}

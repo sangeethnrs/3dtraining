@@ -74,7 +74,10 @@ class KittiDataset(DatasetTemplate):
             image: (H, W, 3), RGB Image
         """
         img_file = self.root_split_path / 'image_2' / ('%s.png' % idx)
-        assert img_file.exists()
+        if not img_file.exists():
+           print(f"Warning: Missing image file {img_file}, skipping...")
+           return None  # or continue with default behavior
+
         image = io.imread(img_file)
         image = image.astype(np.float32)
         image /= 255.0
@@ -82,7 +85,9 @@ class KittiDataset(DatasetTemplate):
 
     def get_image_shape(self, idx):
         img_file = self.root_split_path / 'image_2' / ('%s.png' % idx)
-        assert img_file.exists()
+        if not img_file.exists():
+           print(f"Warning: Missing image file {img_file}, skipping...")
+           return None  # or continue with default behavior
         return np.array(io.imread(img_file).shape[:2], dtype=np.int32)
 
     def get_label(self, idx):
@@ -107,7 +112,9 @@ class KittiDataset(DatasetTemplate):
 
     def get_calib(self, idx):
         calib_file = self.root_split_path / 'calib' / ('%s.txt' % idx)
-        assert calib_file.exists()
+        if not calib_file.exists():
+           print(f"Warning: Missing image file {calib_file}, skipping...")
+           return None  # or continue with default behavior
         return calibration_kitti.Calibration(calib_file)
 
     def get_road_plane(self, idx):
@@ -159,7 +166,8 @@ class KittiDataset(DatasetTemplate):
             image_info = {'image_idx': sample_idx, 'image_shape': self.get_image_shape(sample_idx)}
             info['image'] = image_info
             calib = self.get_calib(sample_idx)
-
+            if calib==None:
+              return None
             P2 = np.concatenate([calib.P2, np.array([[0., 0., 0., 1.]])], axis=0)
             R0_4x4 = np.zeros([4, 4], dtype=calib.R0.dtype)
             R0_4x4[3, 3] = 1.
@@ -236,6 +244,8 @@ class KittiDataset(DatasetTemplate):
         for k in range(len(infos)):
             print('gt_database sample: %d/%d' % (k + 1, len(infos)))
             info = infos[k]
+            if info==None:
+              return None
             sample_idx = info['point_cloud']['lidar_idx']
             points = self.get_lidar(sample_idx)
             annos = info['annos']

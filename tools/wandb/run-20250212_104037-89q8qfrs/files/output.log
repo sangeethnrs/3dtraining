@@ -1,0 +1,89 @@
+2025-02-12 10:40:38,699   INFO  **********************Start training home/sangeeth/Desktop/OpenPCDet/tools/cfgs/kitti_models(default)**********************
+2025-02-12 10:40:38,705   INFO  Database filter by min points Car: 574 => 553
+2025-02-12 10:40:38,705   INFO  Database filter by min points Pedestrian: 92 => 91
+2025-02-12 10:40:38,705   INFO  Database filter by min points Cyclist: 19 => 18
+2025-02-12 10:40:38,706   INFO  Database filter by difficulty Car: 553 => 440
+2025-02-12 10:40:38,706   INFO  Database filter by difficulty Pedestrian: 91 => 85
+2025-02-12 10:40:38,706   INFO  Database filter by difficulty Cyclist: 18 => 16
+2025-02-12 10:40:38,706   INFO  Loading KITTI dataset
+2025-02-12 10:40:38,710   INFO  Total samples for KITTI dataset: 149
+/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/site-packages/torch/functional.py:478: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at  ../aten/src/ATen/native/TensorShape.cpp:2894.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+epochs:   0%|                                                                                                              | 0/80 [00:30<?, ?it/s, loss=3.66, lr=0.00102][34m[1mwandb[0m: [33mWARNING[0m Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+epochs:  39%|███████████████████████████████████████▏                                                             | 31/80 [09:42<14:53, 18.24s/it, loss=2.84, lr=0.00998]
+train:   0%|                                                                                                                                      | 0/38 [00:00<?, ?it/s]
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters

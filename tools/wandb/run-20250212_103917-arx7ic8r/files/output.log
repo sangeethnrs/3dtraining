@@ -1,0 +1,21 @@
+2025-02-12 10:39:17,823   INFO  **********************Start training home/sangeeth/Desktop/OpenPCDet/tools/cfgs/kitti_models(default)**********************
+2025-02-12 10:39:17,830   INFO  Database filter by min points Car: 574 => 553
+2025-02-12 10:39:17,830   INFO  Database filter by min points Pedestrian: 92 => 91
+2025-02-12 10:39:17,830   INFO  Database filter by min points Cyclist: 19 => 18
+2025-02-12 10:39:17,831   INFO  Database filter by difficulty Car: 553 => 440
+2025-02-12 10:39:17,831   INFO  Database filter by difficulty Pedestrian: 91 => 85
+2025-02-12 10:39:17,831   INFO  Database filter by difficulty Cyclist: 18 => 16
+2025-02-12 10:39:17,832   INFO  Loading KITTI dataset
+2025-02-12 10:39:17,832   INFO  Total samples for KITTI dataset: 0
+Traceback (most recent call last):
+  File "/home/sangeeth/Desktop/OpenPCDet/tools/trainwandb.py", line 163, in <module>
+    main()
+  File "/home/sangeeth/Desktop/OpenPCDet/tools/trainwandb.py", line 89, in main
+    train_set, train_loader, train_sampler = build_dataloader(
+  File "/home/sangeeth/Desktop/OpenPCDet/pcdet/datasets/__init__.py", line 77, in build_dataloader
+    dataloader = DataLoader(
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 353, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore[arg-type]
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/site-packages/torch/utils/data/sampler.py", line 107, in __init__
+    raise ValueError("num_samples should be a positive integer "
+ValueError: num_samples should be a positive integer value, but got num_samples=0

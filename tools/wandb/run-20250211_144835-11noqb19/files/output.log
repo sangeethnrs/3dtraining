@@ -1,0 +1,14 @@
+2025-02-11 14:48:36,332   INFO  **********************Start training home/sangeeth/Desktop/OpenPCDet/tools/cfgs/kitti_models(default)**********************
+2025-02-11 14:48:36,337   INFO  Database filter by min points Car: 574 => 553
+2025-02-11 14:48:36,337   INFO  Database filter by min points Pedestrian: 92 => 91
+2025-02-11 14:48:36,337   INFO  Database filter by min points Cyclist: 19 => 18
+2025-02-11 14:48:36,338   INFO  Database filter by difficulty Car: 553 => 440
+2025-02-11 14:48:36,338   INFO  Database filter by difficulty Pedestrian: 91 => 85
+2025-02-11 14:48:36,338   INFO  Database filter by difficulty Cyclist: 18 => 16
+2025-02-11 14:48:36,339   INFO  Loading KITTI dataset
+2025-02-11 14:48:36,342   INFO  Total samples for KITTI dataset: 149
+2025-02-11 14:48:38,416   INFO  ==> Loading parameters from checkpoint /home/sangeeth/Desktop/OpenPCDet/output/home/sangeeth/Desktop/OpenPCDet/tools/cfgs/kitti_models/PartA2_free/default/ckpt/checkpoint_epoch_80.pth to GPU
+2025-02-11 14:48:38,771   INFO  ==> Loading optimizer parameters from checkpoint /home/sangeeth/Desktop/OpenPCDet/output/home/sangeeth/Desktop/OpenPCDet/tools/cfgs/kitti_models/PartA2_free/default/ckpt/checkpoint_epoch_80.pth to GPU
+==> Checkpoint trained from version: pcdet+0.6.0+8caccce
+2025-02-11 14:48:38,781   INFO  ==> Done
+epochs: 0it [00:00, ?it/s]

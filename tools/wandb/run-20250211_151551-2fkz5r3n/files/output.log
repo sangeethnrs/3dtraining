@@ -1,0 +1,11 @@
+2025-02-11 15:15:51,734   INFO  **********************Start training home/sangeeth/Desktop/OpenPCDet/tools/cfgs/kitti_models(default)**********************
+2025-02-11 15:15:51,740   INFO  Database filter by min points Car: 574 => 553
+2025-02-11 15:15:51,740   INFO  Database filter by min points Pedestrian: 92 => 91
+2025-02-11 15:15:51,740   INFO  Database filter by min points Cyclist: 19 => 18
+2025-02-11 15:15:51,740   INFO  Database filter by difficulty Car: 553 => 440
+2025-02-11 15:15:51,741   INFO  Database filter by difficulty Pedestrian: 91 => 85
+2025-02-11 15:15:51,741   INFO  Database filter by difficulty Cyclist: 18 => 16
+2025-02-11 15:15:51,741   INFO  Loading KITTI dataset
+2025-02-11 15:15:51,744   INFO  Total samples for KITTI dataset: 149
+epochs:   0%|                                                                                                              | 0/80 [00:22<?, ?it/s, loss=2.76, lr=0.00102]
+2025-02-11 15:16:16,243  ERROR  Training failed: name 'save_checkpoint' is not defined                                                                                   

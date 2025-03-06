@@ -1,0 +1,13 @@
+2025-02-12 10:40:40,795 INFO    MainThread:3319863 [wandb_init.py:setup_run_log_directory():637] Logging user logs to /home/sangeeth/Desktop/OpenPCDet/tools/wandb/run-20250212_104040-avk0jsi6/logs/debug.log
+2025-02-12 10:40:40,795 INFO    MainThread:3319863 [wandb_init.py:setup_run_log_directory():638] Logging internal logs to /home/sangeeth/Desktop/OpenPCDet/tools/wandb/run-20250212_104040-avk0jsi6/logs/debug-internal.log
+2025-02-12 10:40:40,795 INFO    MainThread:3319863 [wandb_init.py:init():756] calling init triggers
+2025-02-12 10:40:40,795 INFO    MainThread:3319863 [wandb_init.py:init():761] wandb.init called with sweep_config: {}
+config: {'model': 'PartA2Net', 'optimizer': 'OptimWrapper', 'learning_rate': 0.01, 'epochs': 80, 'batch_size': 4, '_wandb': {}}
+2025-02-12 10:40:40,795 INFO    MainThread:3319863 [wandb_init.py:init():781] wandb.init() called when a run is still active
+2025-02-12 11:03:59,541 INFO    MainThread:3319863 [wandb_run.py:_finish():2110] finishing run sangeeth1012/OpenPCDet/89q8qfrs
+2025-02-12 11:03:59,561 INFO    MainThread:3319863 [wandb_run.py:_atexit_cleanup():2350] got exitcode: 0
+2025-02-12 11:03:59,562 INFO    MainThread:3319863 [wandb_run.py:_restore():2332] restore
+2025-02-12 11:03:59,589 INFO    MainThread:3319863 [wandb_run.py:_restore():2338] restore done
+2025-02-13 00:46:14,839 INFO    MainThread:3319863 [wandb_run.py:_footer_history_summary_info():3963] rendering history
+2025-02-13 00:46:14,846 INFO    MainThread:3319863 [wandb_run.py:_footer_history_summary_info():3995] rendering summary
+2025-02-13 00:46:14,847 INFO    MainThread:3319863 [wandb_run.py:_footer_sync_info():3924] logging synced files

@@ -1,5 +1,5 @@
 import os
-
+from typing import Dict, Tuple, Optional
 import torch
 import torch.nn as nn
 import numpy as np
@@ -19,11 +19,87 @@ class Detector3DTemplate(nn.Module):
         self.dataset = dataset
         self.class_names = dataset.class_names
         self.register_buffer('global_step', torch.LongTensor(1).zero_())
-
+        
+        # Initialize feature storage
+        self.intermediate_features = {}
+        
         self.module_topology = [
             'vfe', 'backbone_3d', 'map_to_bev_module', 'pfe',
             'backbone_2d', 'dense_head',  'point_head', 'roi_head'
         ]
+
+    def extract_features(self, batch_dict):
+        """
+        Extract features from different modules of the model.
+        Returns both the prediction results and feature embeddings.
+        """
+        # Process through model components
+        for cur_module in self.module_list:
+            batch_dict = cur_module(batch_dict)
+            
+            # Store features from each module if available
+            if hasattr(cur_module, 'forward_ret_dict'):
+                module_name = cur_module.__class__.__name__.lower()
+                self.intermediate_features[module_name] = cur_module.forward_ret_dict
+        
+        if self.training:
+            loss, tb_dict, disp_dict = self.get_training_loss()
+            ret_dict = {'loss': loss}
+            return ret_dict, tb_dict, disp_dict, None
+        
+        # Post-processing for test mode
+        pred_dicts, recall_dicts = self.post_processing(batch_dict)
+        
+        # Extract and combine feature embeddings
+        feature_embeddings = self._combine_features(batch_dict)
+        
+        return pred_dicts, recall_dicts, feature_embeddings
+
+    def _combine_features(self, batch_dict: dict) -> torch.Tensor:
+        """
+        Combine features from different parts of the network.
+        """
+        features_to_combine = []
+        
+        # Collect features from different sources
+        if 'backbone_features' in batch_dict:
+            features_to_combine.append(batch_dict['backbone_features'])
+        if 'spatial_features_2d' in batch_dict:
+            features_to_combine.append(batch_dict['spatial_features_2d'])
+        if 'roi_features' in batch_dict:
+            features_to_combine.append(batch_dict['roi_features'])
+            
+        # If no features found, return None
+        if not features_to_combine:
+            return None
+            
+        # Process and combine features
+        processed_features = []
+        for feat in features_to_combine:
+            if feat is not None:
+                # Handle different feature dimensions
+                if len(feat.shape) == 4:  # 2D features (B, C, H, W)
+                    feat = torch.mean(feat, dim=(2, 3))
+                elif len(feat.shape) == 3:  # 1D features (B, N, C)
+                    feat = torch.mean(feat, dim=1)
+                processed_features.append(feat)
+        
+        if processed_features:
+            # Concatenate all features
+            combined_features = torch.cat(processed_features, dim=-1)
+            return combined_features
+        
+        return None
+
+    def forward(self, batch_dict, **kwargs):
+        """
+        Main forward pass with support for feature extraction
+        """
+        return self.extract_features(batch_dict)
+
+    def get_feature_maps(self) -> Dict[str, torch.Tensor]:
+        """Return stored intermediate feature maps."""
+        return self.intermediate_features
 
     @property
     def mode(self):

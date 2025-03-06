@@ -8,17 +8,40 @@ from math import pi as PI
 
 @torch.jit.script
 def quat_to_mat(quat_wxyz: Tensor) -> Tensor:
-    """Convert scalar first quaternion to rotation matrix.
-
-    Args:
-        quat_wxyz: (...,4) Scalar first quaternions.
-
-    Returns:
-        (...,3,3) 3D rotation matrices.
     """
-    return C.quaternion_to_rotation_matrix(
-        quat_wxyz, order=C.QuaternionCoeffOrder.WXYZ
-    )
+    Convert quaternion to rotation matrix.
+    
+    Args:
+        quat_wxyz: (..., 4) tensor containing quaternions in wxyz order
+        
+    Returns:
+        (..., 3, 3) rotation matrices
+    """
+    # Normalize quaternion
+    quat = quat_wxyz / torch.norm(quat_wxyz, dim=-1, keepdim=True)
+    w, x, y, z = torch.unbind(quat, -1)
+    
+    # Explicitly calculate rotation matrix elements
+    xx = x * x
+    yy = y * y
+    zz = z * z
+    wx = w * x
+    wy = w * y
+    wz = w * z
+    xy = x * y
+    xz = x * z
+    yz = y * z
+
+    # Build rotation matrix
+    rot_matrix = torch.stack([
+        1 - 2 * (yy + zz), 2 * (xy - wz), 2 * (xz + wy),
+        2 * (xy + wz), 1 - 2 * (xx + zz), 2 * (yz - wx),
+        2 * (xz - wy), 2 * (yz + wx), 1 - 2 * (xx + yy)
+    ], dim=-1)
+    
+    # Reshape to (..., 3, 3)
+    output_shape = list(quat.shape[:-1]) + [3, 3]
+    return rot_matrix.reshape(output_shape)
 
 
 # @torch.jit.script

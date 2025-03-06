@@ -35,20 +35,24 @@ def load_data_to_gpu(batch_dict):
         else:
             batch_dict[key] = torch.from_numpy(val).float().cuda()
 
-
 def model_fn_decorator():
-    ModelReturn = namedtuple('ModelReturn', ['loss', 'tb_dict', 'disp_dict'])
-
     def model_func(model, batch_dict):
-        load_data_to_gpu(batch_dict)
-        ret_dict, tb_dict, disp_dict = model(batch_dict)
-
-        loss = ret_dict['loss'].mean()
-        if hasattr(model, 'update_global_step'):
-            model.update_global_step()
-        else:
-            model.module.update_global_step()
-
-        return ModelReturn(loss, tb_dict, disp_dict)
-
+        try:
+            # Forward pass
+            ret_dict, tb_dict, disp_dict = model(batch_dict)
+            
+            if ret_dict is None:
+                raise ValueError("Model returned None for ret_dict")
+            if 'loss' not in ret_dict:
+                raise ValueError(f"ret_dict missing 'loss' key. Keys present: {ret_dict.keys()}")
+            if not isinstance(ret_dict['loss'], (torch.Tensor, float)):
+                raise ValueError(f"Loss is of unexpected type: {type(ret_dict['loss'])}")
+                
+            return ret_dict, tb_dict, disp_dict
+            
+        except Exception as e:
+            print(f"Error in model_func: {str(e)}")
+            print(f"batch_dict keys: {batch_dict.keys()}")
+            raise
+            
     return model_func

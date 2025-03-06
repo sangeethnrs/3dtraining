@@ -1,0 +1,11 @@
+2025-02-11 15:22:27,057 INFO    MainThread:3190415 [wandb_init.py:setup_run_log_directory():637] Logging user logs to /home/sangeeth/Desktop/OpenPCDet/tools/wandb/run-20250211_152227-9xkbsduh/logs/debug.log
+2025-02-11 15:22:27,057 INFO    MainThread:3190415 [wandb_init.py:setup_run_log_directory():638] Logging internal logs to /home/sangeeth/Desktop/OpenPCDet/tools/wandb/run-20250211_152227-9xkbsduh/logs/debug-internal.log
+2025-02-11 15:22:27,057 INFO    MainThread:3190415 [wandb_init.py:init():756] calling init triggers
+2025-02-11 15:22:27,057 INFO    MainThread:3190415 [wandb_init.py:init():761] wandb.init called with sweep_config: {}
+config: {'model': 'PointRCNN', 'optimizer': 'OptimWrapper', 'learning_rate': 0.01, 'epochs': 80, 'batch_size': 2, '_wandb': {}}
+2025-02-11 15:22:27,057 INFO    MainThread:3190415 [wandb_init.py:init():781] wandb.init() called when a run is still active
+2025-02-11 15:30:04,950 INFO    MainThread:3190415 [wandb_run.py:_finish():2110] finishing run sangeeth1012/OpenPCDet/lwca1lra
+2025-02-11 15:30:04,951 INFO    MainThread:3190415 [wandb_run.py:_atexit_cleanup():2350] got exitcode: 0
+2025-02-11 15:30:04,951 INFO    MainThread:3190415 [wandb_run.py:_restore():2332] restore
+2025-02-11 15:30:04,975 INFO    MainThread:3190415 [wandb_run.py:_restore():2338] restore done
+2025-02-11 15:45:27,157 WARNING MsgRouterThr:3190415 [router.py:message_loop():75] message_loop has been closed

@@ -1,0 +1,75 @@
+2025-02-11 15:22:25,020   INFO  **********************Start training home/sangeeth/Desktop/OpenPCDet/tools/cfgs/kitti_models(default)**********************
+2025-02-11 15:22:25,025   INFO  Database filter by min points Car: 574 => 553
+2025-02-11 15:22:25,025   INFO  Database filter by min points Pedestrian: 92 => 91
+2025-02-11 15:22:25,026   INFO  Database filter by min points Cyclist: 19 => 18
+2025-02-11 15:22:25,026   INFO  Database filter by difficulty Car: 553 => 440
+2025-02-11 15:22:25,026   INFO  Database filter by difficulty Pedestrian: 91 => 85
+2025-02-11 15:22:25,026   INFO  Database filter by difficulty Cyclist: 18 => 16
+2025-02-11 15:22:25,027   INFO  Loading KITTI dataset
+2025-02-11 15:22:25,030   INFO  Total samples for KITTI dataset: 149
+epochs:   0%|                                                                                                               | 0/80 [00:21<?, ?it/s, loss=3.2, lr=0.00102][34m[1mwandb[0m: [33mWARNING[0m Saving files without folders. If you want to preserve subdirectories pass base_path to wandb.save, i.e. wandb.save("/mnt/folder/file.h5", base_path="/mnt")
+epochs:  31%|███████████████████████████████▌                                                                     | 25/80 [07:37<16:47, 18.31s/it, loss=2.71, lr=0.00924]
+2025-02-11 15:30:04,926  ERROR  Training failed: [enforce fail at inline_container.cc:319] . unexpected pos 476354304 vs 476354192                                       
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+new iters
+--- Logging error ---
+Traceback (most recent call last):
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/site-packages/torch/serialization.py", line 379, in save
+    _save(obj, opened_zipfile, pickle_module, pickle_protocol)
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/site-packages/torch/serialization.py", line 604, in _save
+    zip_file.write_record(name, storage.data_ptr(), num_bytes)
+OSError: [Errno 28] No space left on device
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sangeeth/Desktop/OpenPCDet/tools/trainwandb.py", line 133, in main
+    train_utils.train_model(
+  File "/home/sangeeth/Desktop/OpenPCDet/tools/train_utils/train_utils.py", line 227, in train_model
+    save_checkpoint(
+  File "/home/sangeeth/Desktop/OpenPCDet/tools/train_utils/train_utils.py", line 43, in save_checkpoint
+    torch.save(state, filename)
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/site-packages/torch/serialization.py", line 380, in save
+    return
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/site-packages/torch/serialization.py", line 259, in __exit__
+    self.file_like.write_end_of_file()
+RuntimeError: [enforce fail at inline_container.cc:319] . unexpected pos 476354304 vs 476354192
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/logging/__init__.py", line 1087, in emit
+    self.flush()
+  File "/home/sangeeth/anaconda3/envs/openpc/lib/python3.9/logging/__init__.py", line 1067, in flush
+    self.stream.flush()
+OSError: [Errno 28] No space left on device
+Call stack:
+  File "/home/sangeeth/Desktop/OpenPCDet/tools/trainwandb.py", line 163, in <module>
+    main()
+  File "/home/sangeeth/Desktop/OpenPCDet/tools/trainwandb.py", line 154, in main
+    logger.error(f"Training failed: {str(e)}")
+Message: 'Training failed: [enforce fail at inline_container.cc:319] . unexpected pos 476354304 vs 476354192'
+Arguments: ()

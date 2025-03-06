@@ -6,10 +6,13 @@ import os
 import re
 import time
 from pathlib import Path
+import getpass
 
 import numpy as np
 import torch
 from tensorboardX import SummaryWriter
+import numba
+from numba import config, jit, prange
 
 from eval_utils import eval_utils
 from pcdet.config import cfg, cfg_from_list, cfg_from_yaml_file, log_config_to_file
@@ -17,6 +20,17 @@ from pcdet.datasets import build_dataloader
 from pcdet.models import build_network
 from pcdet.utils import common_utils
 
+
+# Enable Numba parallel diagnostics
+config.THREADING_LAYER = 'omp'
+config.PARALLEL_DIAGNOSTICS = 2
+
+@jit(nopython=True, parallel=True)
+def d3_box_overlap_kernel(boxes, qboxes, rinc, criterion=-1):
+    for i in prange(boxes.shape[0]):
+        for j in prange(qboxes.shape[0]):
+            # Your JIT-compiled function implementation
+            pass
 
 def parse_config():
     parser = argparse.ArgumentParser(description='arg parser')
@@ -28,7 +42,7 @@ def parse_config():
     parser.add_argument('--ckpt', type=str, default=None, help='checkpoint to start from')
     parser.add_argument('--pretrained_model', type=str, default=None, help='pretrained_model')
     parser.add_argument('--launcher', choices=['none', 'pytorch', 'slurm'], default='none')
-    parser.add_argument('--tcp_port', type=int, default=18888, help='tcp port for distrbuted training')
+    parser.add_argument('--tcp_port', type=int, default=18888, help='tcp port for distributed training')
     parser.add_argument('--local_rank', type=int, default=None, help='local rank for distributed training')
     parser.add_argument('--set', dest='set_cfgs', default=None, nargs=argparse.REMAINDER,
                         help='set extra config keys if needed')
@@ -137,6 +151,14 @@ def repeat_eval_ckpt(model, test_loader, args, eval_output_dir, logger, ckpt_dir
 
 def main():
     args, cfg = parse_config()
+
+    # Display current date and time in UTC
+    current_datetime = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+    print(f"Current Date and Time (UTC): {current_datetime}")
+
+    # Display current user's login name
+    current_user = getpass.getuser()
+    print(f"Current User's Login: {current_user}")
 
     if args.infer_time:
         os.environ['CUDA_LAUNCH_BLOCKING'] = '1'

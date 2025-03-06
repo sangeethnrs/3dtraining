@@ -56,7 +56,6 @@ def annealing_cos(start, end, pct):
     cos_out = np.cos(np.pi * pct) + 1
     return end + (start - end) / 2 * cos_out
 
-
 class OneCycle(LRSchedulerStep):
     def __init__(self, fai_optimizer, total_step, lr_max, moms, div_factor,
                  pct_start):
@@ -75,8 +74,14 @@ class OneCycle(LRSchedulerStep):
                                                *self.moms[::-1])))
         fai_optimizer.lr, fai_optimizer.mom = low_lr, self.moms[0]
         super().__init__(fai_optimizer, total_step, lr_phases, mom_phases)
-
-
+    
+    def get_lr(self):
+        """Return current learning rate"""
+        return [self.optimizer.lr]
+        
+    def get_last_lr(self):
+        """Alternative method name used by newer PyTorch versions"""
+        return [self.optimizer.lr]
 class CosineWarmupLR(lr_sched._LRScheduler):
     def __init__(self, optimizer, T_max, eta_min=0, last_epoch=-1):
         self.T_max = T_max

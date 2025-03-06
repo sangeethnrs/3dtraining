@@ -1,0 +1,15 @@
+{"time":"2025-02-12T10:39:17.372204689-05:00","level":"INFO","msg":"stream: starting","core version":"0.19.6","symlink path":"/home/sangeeth/Desktop/OpenPCDet/tools/wandb/run-20250212_103917-arx7ic8r/logs/debug-core.log"}
+{"time":"2025-02-12T10:39:17.476763145-05:00","level":"INFO","msg":"created new stream","id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:17.476823942-05:00","level":"INFO","msg":"stream: started","id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:17.476887273-05:00","level":"INFO","msg":"writer: Do: started","stream_id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:17.476964805-05:00","level":"INFO","msg":"sender: started","stream_id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:17.47701711-05:00","level":"INFO","msg":"handler: started","stream_id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:17.7513-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-12T10:39:17.864488281-05:00","level":"INFO","msg":"stream: closing","id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:17.864539387-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-12T10:39:17.865333016-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-12T10:39:18.551797232-05:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-02-12T10:39:18.770317016-05:00","level":"INFO","msg":"handler: closed","stream_id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:18.770378264-05:00","level":"INFO","msg":"sender: closed","stream_id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:18.770354625-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"arx7ic8r"}
+{"time":"2025-02-12T10:39:18.770479874-05:00","level":"INFO","msg":"stream: closed","id":"arx7ic8r"}
