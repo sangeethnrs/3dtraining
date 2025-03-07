@@ -4,7 +4,9 @@ from torch.utils.data import DataLoader
 from torch.utils.data import DistributedSampler as _DistributedSampler
 
 from pcdet.utils import common_utils
-
+from .dataset_config import DatasetConfig
+from .formats.point_format import PointFormat, PointFormatConverter
+from .augmentation.unified_augmentor import UnifiedAugmentor
 from .dataset import DatasetTemplate
 from .kitti.kitti_dataset import KittiDataset
 from .nuscenes.nuscenes_dataset import NuScenesDataset
@@ -81,3 +83,11 @@ def build_dataloader(dataset_cfg, class_names, batch_size, dist, root_path=None,
     )
 
     return dataset, dataloader, sampler
+
+
+__all__.update({
+    'DatasetConfig': DatasetConfig,
+    'PointFormat': PointFormat,
+    'PointFormatConverter': PointFormatConverter,
+    'UnifiedAugmentor': UnifiedAugmentor
+})
